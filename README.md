@@ -1,4 +1,4 @@
-<div textalign : center > # Password-Manager-App-Using-JetpackCompose </div>
+# Password-Manager-App-Using-JetpackCompose 
 
 # Password Manager Application Guide
 
