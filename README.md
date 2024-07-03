@@ -49,7 +49,7 @@ https://github.com/NandishNaik01/Password-Manager-App-Using-JetpackCompose/asset
     <img src="https://github.com/NandishNaik01/Password-Manager-App-Using-JetpackCompose/assets/147323163/a540e5d3-0692-4271-8ec0-09ac1c34c679" alt="Account Details" width="200"/>
     <img src="https://github.com/NandishNaik01/Password-Manager-App-Using-JetpackCompose/assets/147323163/284a7b4e-1caa-489c-b3f4-b89a927610ba" alt="Edit And Delete" width="200"/>
 </div>
----
+
 
 ## SET IT UP LOCALLY
 
