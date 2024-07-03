@@ -63,7 +63,7 @@ class MainViewModel @Inject constructor(private val repository: Repository) : Vi
 
     //encryption and decryption
 
-    var key : String="mysecretkey12345"
+    var key : String="nandishnaik12345"
     var secretKeySpec = SecretKeySpec(key.toByteArray(),"AES")
     fun encrypt(string: String) : String{
 

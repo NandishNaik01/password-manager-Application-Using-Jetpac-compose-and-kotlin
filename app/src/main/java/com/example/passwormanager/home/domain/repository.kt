@@ -21,7 +21,8 @@ class Repository @Inject constructor(
         userName = passwordEntity.userName,
         id = passwordEntity.id
     )
-    suspend fun deletedPassword(passwordEntity: PasswordEntity)= passwordDao.deletePassword(passwordEntity)
+    suspend fun deletedPassword(passwordEntity: PasswordEntity): Unit = passwordDao.deletePassword(passwordEntity)
+
     fun getAllPassword(): Flow<List< PasswordEntity>> = passwordDao.getAllPassword().flowOn(Dispatchers.IO).conflate()
 
 }

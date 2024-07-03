@@ -16,6 +16,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -23,6 +24,7 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
@@ -39,6 +41,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+//import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
@@ -51,28 +54,26 @@ import com.example.chaintechnetwork.home.util.PasswordTextField
 import com.example.passwormanager.home.data.PasswordEntity
 import com.example.passwormanager.ui.theme.BlueTheme
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen() {
-
     var modelSheetbtn by remember { mutableStateOf(false) }
     var editModelSheetbtn by remember { mutableStateOf(false) }
     var alertDiaglog by remember { mutableStateOf(false) }
     var inputAccountName by remember { mutableStateOf("") }
     var inputUserName by remember { mutableStateOf("") }
     var inputPassword by remember { mutableStateOf("") }
+//    var searchQuery by remember { mutableStateOf(TextFieldValue()) }
 
     val viewModel = hiltViewModel<MainViewModel>()
     val allPassword = viewModel.passwordList.collectAsState().value
-    var currentPasssword = remember {
+    val currentPassword = remember {
         mutableStateOf(PasswordEntity("", "", ""))
     }
 
     var editinputAccountName by remember { mutableStateOf("") }
     var editinputUserName by remember { mutableStateOf("") }
     var editinputPassword by remember { mutableStateOf("") }
-
 
     Scaffold(
         floatingActionButton = {
@@ -85,35 +86,42 @@ fun HomeScreen() {
             ) {
                 Icon(imageVector = Icons.Default.Add, contentDescription = "add password")
             }
-        }, topBar = {
-            TopAppBar(title = { Text(text = "Password Manager") })
+        },
+        topBar = {
+            TopAppBar(
+                title = { Text(text = "Password Manager") },
+                actions = {
+                    IconButton(
+                        onClick = { /* TODO: Handle search action */ }
+                    ) {
+                        Icon(imageVector = Icons.Default.Search, contentDescription = "Search")
+                    }
+                }
+            )
         }
     ) { paddingValues ->
 
         LazyColumn(
             modifier = Modifier.padding(paddingValues)
         ) {
-            items(allPassword) { passswords ->
-                CommonTextBox(passswords) {
-                    currentPasssword.value = it
+            items(allPassword) { password ->
+                CommonTextBox(password) {
+                    currentPassword.value = it
                     editModelSheetbtn = true
-                    editinputAccountName = viewModel.decrypt(currentPasssword.value.accountName)
-                    editinputUserName= viewModel.decrypt( currentPasssword.value.userName)
-                    editinputPassword= viewModel.decrypt( currentPasssword.value.password)
-
+                    editinputAccountName = viewModel.decrypt(currentPassword.value.accountName)
+                    editinputUserName = viewModel.decrypt(currentPassword.value.userName)
+                    editinputPassword = viewModel.decrypt(currentPassword.value.password)
                 }
-
             }
         }
 
-        if (viewModel.loading.value){
+        if (viewModel.loading.value) {
             Box(
                 modifier = Modifier.fillMaxSize().zIndex(1F)
                     .wrapContentSize(Alignment.Center)
-            ){
+            ) {
                 CircularProgressIndicator()
             }
-
         }
 
         if (modelSheetbtn) {
@@ -122,8 +130,6 @@ fun HomeScreen() {
                 inputPassword = ""
                 inputAccountName = ""
                 inputUserName = ""
-
-
             }) {
                 CommonTextField(
                     inputext = inputAccountName,
@@ -147,13 +153,11 @@ fun HomeScreen() {
                                 encryptedAccountName,
                                 encryptedUserName,
                                 encryptedPassword
-
                             )
                         )
                         inputPassword = ""
                         inputAccountName = ""
                         inputUserName = ""
-
                         modelSheetbtn = false
                     },
                     modifier = Modifier
@@ -175,12 +179,12 @@ fun HomeScreen() {
                 }
             }
         }
+
         if (editModelSheetbtn) {
             ModalBottomSheet(onDismissRequest = { editModelSheetbtn = false }) {
-
-                val decryptedAccountName = viewModel.decrypt( currentPasssword.value.accountName)
-                val decryptedUserName = viewModel.decrypt( currentPasssword.value.userName)
-                val decryptedPassword = viewModel.decrypt( currentPasssword.value.password)
+                val decryptedAccountName = viewModel.decrypt(currentPassword.value.accountName)
+                val decryptedUserName = viewModel.decrypt(currentPassword.value.userName)
+                val decryptedPassword = viewModel.decrypt(currentPassword.value.password)
 
                 Column(
                     modifier = Modifier.padding(horizontal = 40.dp)
@@ -192,12 +196,10 @@ fun HomeScreen() {
                         fontWeight = FontWeight.ExtraBold
                     )
                     Spacer(modifier = Modifier.padding(10.dp))
-                    CommonInfoBox("Account Name",decryptedAccountName)
-                    CommonInfoBox("Username/Email",decryptedUserName)
-                    PasswordInfoBox("Password",decryptedPassword)
-
+                    CommonInfoBox("Account Name", decryptedAccountName)
+                    CommonInfoBox("Username/Email", decryptedUserName)
+                    PasswordInfoBox("Password", decryptedPassword)
                 }
-
 
                 Row(
                     modifier = Modifier
@@ -230,17 +232,16 @@ fun HomeScreen() {
                         onClick = {
                             viewModel.Delete(
                                 PasswordEntity(
-                                    id = currentPasssword.value.id,
-                                    accountName = viewModel.decrypt(currentPasssword.value.accountName),
-                                    userName = viewModel.decrypt(currentPasssword.value.userName),
-                                    password = viewModel.decrypt(currentPasssword.value.password)
+                                    id = currentPassword.value.id,
+                                    accountName = viewModel.decrypt(currentPassword.value.accountName),
+                                    userName = viewModel.decrypt(currentPassword.value.userName),
+                                    password = viewModel.decrypt(currentPassword.value.password)
                                 )
                             )
                             editModelSheetbtn = false
                         },
                         modifier = Modifier
                             .padding(horizontal = 20.dp, vertical = 10.dp)
-                            .padding(bottom = 35.dp)
                             .width(150.dp)
                             .height(50.dp),
                         shape = MaterialTheme.shapes.extraLarge,
@@ -256,13 +257,10 @@ fun HomeScreen() {
                         )
                     }
                 }
-
             }
         }
 
-
         if (alertDiaglog) {
-
             AlertDialog(
                 modifier = Modifier
                     .fillMaxWidth(),
@@ -302,7 +300,6 @@ fun HomeScreen() {
                     }
                 },
                 confirmButton = {
-
                     TextButton(
                         onClick = {
                             alertDiaglog = false
@@ -316,7 +313,7 @@ fun HomeScreen() {
                             alertDiaglog = false
                             viewModel.Update(
                                 PasswordEntity(
-                                    id = currentPasssword.value.id,
+                                    id = currentPassword.value.id,
                                     accountName = viewModel.encrypt(editinputAccountName),
                                     userName = viewModel.encrypt(editinputUserName),
                                     password = viewModel.encrypt(editinputPassword)
@@ -330,9 +327,5 @@ fun HomeScreen() {
                 }
             )
         }
-
-
-
     }
-
 }

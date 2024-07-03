@@ -8,7 +8,7 @@ import com.example.passwormanager.home.data.PasswordEntity
 
 @Database(
     entities = [PasswordEntity::class],
-    version = 3,
+    version = 4,
     exportSchema = false
 
 )
