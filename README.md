@@ -39,13 +39,6 @@ Certainly! Here's an updated version with a table of contents:
 ![Add](https://github.com/NandishNaik01/Password-Manager-App-Using-JetpackCompose/assets/147323163/1dda988d-365e-4602-ba3d-f0a2ec63f405) ![Account Details](https://github.com/NandishNaik01/Password-Manager-App-Using-JetpackCompose/assets/147323163/a540e5d3-0692-4271-8ec0-09ac1c34c679) ![Edit And Delete](https://github.com/NandishNaik01/Password-Manager-App-Using-JetpackCompose/assets/147323163/284a7b4e-1caa-489c-b3f4-b89a927610ba)
 
 
-![Authentication](https://github.com/NandishNaik01/Password-Manager-App-Using-JetpackCompose/assets/147323163/77f4b175-d0f1-49e8-9648-5c5d7d358d7c)
-![BioMetric](https://github.com/NandishNaik01/Password-Manager-App-Using-JetpackCompose/assets/147323163/813fdde9-a32e-4d96-9ee0-59b7f56bd4a7)
-![Home](https://github.com/NandishNaik01/Password-Manager-App-Using-JetpackCompose/assets/147323163/2f1b204c-a20b-4a54-a756-68a233f01969)
-![Add](https://github.com/NandishNaik01/Password-Manager-App-Using-JetpackCompose/assets/147323163/1dda988d-365e-4602-ba3d-f0a2ec63f405)
-![Account Details](https://github.com/NandishNaik01/Password-Manager-App-Using-JetpackCompose/assets/147323163/a540e5d3-0692-4271-8ec0-09ac1c34c679)
-![Edit And Delete](https://github.com/NandishNaik01/Password-Manager-App-Using-JetpackCompose/assets/147323163/284a7b4e-1caa-489c-b3f4-b89a927610ba)
-
 
 ## SET IT UP LOCALLY
 
