@@ -1,8 +1,4 @@
-# Password-Manager-App-Using-JetpackCompose
-
-Certainly! Here's an updated version with a table of contents:
-
----
+<div textalign : center > # Password-Manager-App-Using-JetpackCompose </div>
 
 # Password Manager Application Guide
 
@@ -35,6 +31,11 @@ Certainly! Here's an updated version with a table of contents:
 - **Android Architecture Components:** ViewModel, LiveData, Data Binding for robust app structure.
 - **Material Design:** Google's design principles for a consistent user experience.
 
+## VIDEO
+
+https://github.com/NandishNaik01/Password-Manager-App-Using-JetpackCompose/assets/147323163/dc98783b-43df-469a-9a96-e30ece508238
+
+
 ## Screenshots
 ---
 <div align="center">
@@ -49,6 +50,7 @@ Certainly! Here's an updated version with a table of contents:
     <img src="https://github.com/NandishNaik01/Password-Manager-App-Using-JetpackCompose/assets/147323163/284a7b4e-1caa-489c-b3f4-b89a927610ba" alt="Edit And Delete" width="200"/>
 </div>
 ---
+
 ## SET IT UP LOCALLY
 
 ### Clone the Repository
