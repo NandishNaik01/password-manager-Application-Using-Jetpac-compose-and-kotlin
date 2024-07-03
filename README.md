@@ -131,8 +131,8 @@ https://github.com/NandishNaik01/Password-Manager-App-Using-JetpackCompose/asset
 
 For any inquiries or support, please contact:
 
-- **Email:** your-email@example.com
-- **Phone:** +1 (123) 456-7890
+- **Portofolio:** https://nandishnaik.netlify.app
+- **Mail:** naik.nandishd@gmail.com 
 ---
 
 ## Conclusion
