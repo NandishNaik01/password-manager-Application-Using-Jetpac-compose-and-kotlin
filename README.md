@@ -123,7 +123,7 @@ https://github.com/NandishNaik01/Password-Manager-App-Using-JetpackCompose/asset
 - Clean, minimalist design for easy navigation.
 - Clear labels, intuitive icons, and logical layout.
 
-### Technology Stack
+
 
 
 ---
