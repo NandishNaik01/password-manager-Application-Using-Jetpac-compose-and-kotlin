@@ -56,7 +56,7 @@ https://github.com/NandishNaik01/Password-Manager-App-Using-JetpackCompose/asset
 ### Clone the Repository
 1. **Clone the Repository:**
    - Navigate to File > New > Project from Version Control.
-   - Use the repository URL: `https://github.com/NandishNaik01/Password-Manager-App-Using-JetpackCompose.git`.
+   - Use the repository URL: `https://github.com/NandishNaik01/password-manager-Application-Using-Jetpac-compose-and-kotlin.git`.
 
 ### Setup Development Environment
 1. **Prepare Your Environment:**
