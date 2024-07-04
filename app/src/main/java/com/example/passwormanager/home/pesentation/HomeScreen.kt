@@ -1,5 +1,6 @@
 package com.example.passwormanager.home.pesentation
 
+//import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -28,6 +29,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
@@ -36,12 +38,12 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
-//import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
@@ -53,6 +55,8 @@ import com.example.chaintechnetwork.home.util.PasswordInfoBox
 import com.example.chaintechnetwork.home.util.PasswordTextField
 import com.example.passwormanager.home.data.PasswordEntity
 import com.example.passwormanager.ui.theme.BlueTheme
+import kotlinx.coroutines.launch
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -60,6 +64,7 @@ fun HomeScreen() {
     var modelSheetbtn by remember { mutableStateOf(false) }
     var editModelSheetbtn by remember { mutableStateOf(false) }
     var alertDiaglog by remember { mutableStateOf(false) }
+//    var alertDiaglog2 by remember { mutableStateOf(false) }
     var inputAccountName by remember { mutableStateOf("") }
     var inputUserName by remember { mutableStateOf("") }
     var inputPassword by remember { mutableStateOf("") }
@@ -74,6 +79,8 @@ fun HomeScreen() {
     var editinputAccountName by remember { mutableStateOf("") }
     var editinputUserName by remember { mutableStateOf("") }
     var editinputPassword by remember { mutableStateOf("") }
+    val snackbarHostState = remember { SnackbarHostState() }
+    val coroutineScope = rememberCoroutineScope()
 
     Scaffold(
         floatingActionButton = {
@@ -145,20 +152,26 @@ fun HomeScreen() {
                     onChange = { inputPassword = it })
                 Button(
                     onClick = {
-                        val encryptedAccountName = viewModel.encrypt(inputAccountName)
-                        val encryptedUserName = viewModel.encrypt(inputUserName)
-                        val encryptedPassword = viewModel.encrypt(inputPassword)
-                        viewModel.AddPassword(
-                            PasswordEntity(
-                                encryptedAccountName,
-                                encryptedUserName,
-                                encryptedPassword
+                        if (inputAccountName.isNotBlank() && inputUserName.isNotBlank() && inputPassword.isNotBlank()) {
+                            val encryptedAccountName = viewModel.encrypt(inputAccountName)
+                            val encryptedUserName = viewModel.encrypt(inputUserName)
+                            val encryptedPassword = viewModel.encrypt(inputPassword)
+                            viewModel.AddPassword(
+                                PasswordEntity(
+                                    encryptedAccountName,
+                                    encryptedUserName,
+                                    encryptedPassword
+                                )
                             )
-                        )
-                        inputPassword = ""
-                        inputAccountName = ""
-                        inputUserName = ""
-                        modelSheetbtn = false
+                            inputPassword = ""
+                            inputAccountName = ""
+                            inputUserName = ""
+                            modelSheetbtn = false
+                        } else{
+                            coroutineScope.launch {
+                                snackbarHostState.showSnackbar("All fields are mandatory. Please fill in all the details.")
+                            }
+                        }
                     },
                     modifier = Modifier
                         .padding(horizontal = 20.dp, vertical = 10.dp)
@@ -179,6 +192,11 @@ fun HomeScreen() {
                 }
             }
         }
+
+
+
+
+
 
         if (editModelSheetbtn) {
             ModalBottomSheet(onDismissRequest = { editModelSheetbtn = false }) {
