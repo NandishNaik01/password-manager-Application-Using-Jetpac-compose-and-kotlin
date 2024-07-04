@@ -138,4 +138,3 @@ For any inquiries or support, please contact:
 ## Conclusion
 
 The Password Manager application provides a secure and intuitive solution for managing passwords on Android devices. By leveraging modern technologies like Kotlin, Jetpack Compose, Room Database, and AES Encryption, the app ensures both usability and security. Whether you're adding, editing, or generating passwords, the app's features are designed to simplify password management while keeping your data safe.
-
