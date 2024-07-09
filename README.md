@@ -43,7 +43,7 @@ https://github.com/NandishNaik01/Password-Manager-App-Using-JetpackCompose/asset
     <img src="https://github.com/NandishNaik01/Password-Manager-App-Using-JetpackCompose/assets/147323163/813fdde9-a32e-4d96-9ee0-59b7f56bd4a7" alt="BioMetric" width="200"/>
     <img src="https://github.com/NandishNaik01/Password-Manager-App-Using-JetpackCompose/assets/147323163/2f1b204c-a20b-4a54-a756-68a233f01969" alt="Home" width="200"/>
 </div>
----
+
 <div align="center">
     <img src="https://github.com/NandishNaik01/Password-Manager-App-Using-JetpackCompose/assets/147323163/1dda988d-365e-4602-ba3d-f0a2ec63f405" alt="Add" width="200"/>
     <img src="https://github.com/NandishNaik01/Password-Manager-App-Using-JetpackCompose/assets/147323163/a540e5d3-0692-4271-8ec0-09ac1c34c679" alt="Account Details" width="200"/>
